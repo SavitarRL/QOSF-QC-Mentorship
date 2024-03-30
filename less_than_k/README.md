@@ -1,4 +1,4 @@
-# Task 1: less than k
+# Less than k
 ## Question prompt:
 Given a positive integer “k” and a list of integer numbers, look for the numbers within the
 list, that are less than k. Consider an appropriate number of qubits and explain why your
@@ -16,7 +16,7 @@ print(A)
 ├── README.md           # this README file
 ├── requirements.txt    # Text file listing the dependencies required for the project
 ├── solution.py         # Python file containing the implementation of the classical and quantum solution
-└──  tests.py           # Python file containing unit tests for the Quantum Solution implementation.
+└── tests.py            # Python file containing unit tests for the Quantum Solution implementation.
 ```
  
 ## Environment
