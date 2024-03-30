@@ -1,7 +1,7 @@
 from solution import ClassicalSolution, QuantumSolution
 
 def main():
-    # Inputs
+    
     k = 7
     list_n = [4,9,11,14,1,13,6,15]
     
@@ -12,5 +12,6 @@ def main():
     
     print("Classical result", classical_result)
     print("Quantum result", quantum_result)
+    
 if __name__ == "__main__":
     main()
