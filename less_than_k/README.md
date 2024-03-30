@@ -39,7 +39,7 @@ To install and use this project, follow these steps:
 
 
    ```sh
-   git clone <repository_url>
+   git clone https://github.com/SavitarRL/QOSF-QC-Mentorship.git
    ```
 2. **Navigate to this project directory:**
 
