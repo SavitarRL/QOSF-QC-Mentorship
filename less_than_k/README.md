@@ -156,12 +156,13 @@ We measure the probabilities of all the states, then we choose the states with t
 
 
 ### Resources and Runtimes
-- Number of qubits:  $N_\text{qubits} = \max{\{ \lceil \log_2({\max{(list\_n)})} \rceil, \lceil \log_2{k} \rceil \}}$
+- Number of qubits:  $N_\text{qubits} = \max{\{ \lceil \log_2({\max{(list\_n)})} \rceil, \lceil \log_2{k} \rceil \}}$. Note that our implementation requires the same number of qubits throughout, therefore we calculate how many qubits we need to encode the numbers in list_n (left) and the number of qubits required to mark the good state (right), then take whatever is larger.
+- Runtime complexity for encoding & decoding: We are looping through list_n while encoding the data to $N_\text{qubits}$ number of qubits, while marking $m$
+number of good states. In total, using basis encoding to map the problem to qubits takes $\mathcal{O}(n\log_2{N_\text{qubits}})$
+- Overall space complexity: We are taking list_n with $\mathcal{O}(n)$ space and encoding it to $n$ number of states, each with $N_\text{qubits}$. As we are creating an equal superposition of $n$ number of states, we only require $N_\text{qubits}$ of qubits. However classically, the worst case is that all elements in the array are less than the target, we still need $\mathcal{O}(n)$ space, which is the same as the classical case.
+- Runtime complexity during search: $\mathcal{O}(\sqrt{\frac{n}{m}})$, hence the quadratic speedup. This is the optimised part of the problem.
 - Optimal iterations to achieve maximum success probability: $t_{\text{opt}} \approx \frac{\pi}{4} \sqrt{\frac{n}{m}}$
-- Runtime complexity for encoding: We are looping through list_n while encoding the data to $N_\text{qubits}$ number of qubits, while marking $m$ number of good states. In total, using basis encoding to map the problem to qubits takes $\mathcal{O}(n\log_2{N_\text{qubits}})$
-- Runtime complexity during search: $\mathcal{O}(\sqrt{\frac{n}{m}})$, hence the quadratic speedup
-- Space complexity: $\mathcal{O}(n)$ since the worst case is that all elements in the array are less than the target, same as the classical case
-- Probabilities of success: $P(success) = \sin^2\left[ (2t + 1) \arccos\left( \sqrt{\frac{n - m}{m}}\right)\right]$
+- Probabilities of success: $P(success) = \sin^2\left[ (2t + 1) \arccos\left( \sqrt{\frac{n - m}{m}}\right)\right ]$
 
 
 ### Tests considered and validity
@@ -186,7 +187,7 @@ It is important to acknowledge that during experimentation, our implementation f
 
 
 #### 2. The encoding problem
-Our current implementation uses a straightforward encoding method to represent numbers in binary format for quantum state preparation. While quantum searching provides us with a quadratic speedup, the encoding runtime takes $\mathcal{O}(n\log_2{N_\text{qubits}})$ and is the limiting factor/bottleneck for overall performance. Exploring more efficient encoding techniques could enhance the overall performance of the algorithm, potentially reducing the number of qubits required and improving the algorithm's scalability.
+Our current implementation uses a straightforward encoding method to represent numbers in binary format for quantum state preparation. While our implementation offers a quadratic speedup only in the quantum searching stage, we still need to traverse through list_n in other parts of the code. The encoding runtime takes $\mathcal{O}(n\log_2{N_\text{qubits}})$ and is the limiting factor/bottleneck for overall performance. Exploring more efficient encoding techniques could enhance the overall performance of the algorithm, potentially reducing the number of qubits required and improving the algorithm's scalability.
 
 
 #### 3. Additional cases to consider -> The encoding problem continued
