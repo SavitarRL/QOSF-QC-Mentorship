@@ -133,8 +133,7 @@ All code for the implementation is in `solution.py`. The classical method is in 
 #### 1. Encoding the problem
 ##### State preparation
 Using basis encoding, we represent the array of discrete integers to an equal superposition of quantum states. We first convert each number to its binary representation, then represent these as quantum states with equal superposition. E.g. for list_n = [8, 9, 11, 14, 1, 13, 12, 15], the resulting quantum state will be:
-$$
- \frac{1}{\sqrt{8}} (|1000\rangle + |1001\rangle + |1011\rangle + |1110\rangle + |0001\rangle + |1101\rangle + |1100\rangle + |1111\rangle)  $$
+$\frac{1}{\sqrt{8}} (|1000\rangle + |1001\rangle + |1011\rangle + |1110\rangle + |0001\rangle + |1101\rangle + |1100\rangle + |1111\rangle)$.
  The `_initial_circuit()` function prepares such state in a quantum circuit.
 ##### Marking good states
 In the same iteration, we convert the elements which are less than $k$ in list_n and convert them into their binary representation. The good states are parsed into the Grover oracle later on. E.g. for list_n = [8, 9, 11, 14, 1, 13, 12, 15] and k = 10, we mark the integers 1, 8, 9, converting them to binary gives:  `['0001', '1000', '1001']`
